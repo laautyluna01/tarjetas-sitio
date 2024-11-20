@@ -11,14 +11,14 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 5px;
             max-width: 80%;
-            margin: 10px auto;
+            margin: 2px auto;
             font-family: 'Aptos', sans-serif;
         }
         .dolar-info {
             display: grid;
             grid-template-columns: repeat(6, minmax(150px, 1fr));
             gap: 5px;
-            margin: 10px 0;
+            margin: 2px 0;
             font-size: 1.1em;
             overflow: hidden;
             white-space: nowrap;
@@ -29,16 +29,18 @@
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             display: inline-block;
-            animation: slide 20s linear infinite;
+            animation: slide 30s linear infinite;
         }
         .update-time {
             font-size: 0.9em;
             color: #666;
-            margin-top: 10px;
+            margin-top: 2px;
             text-align: center;
         }
         @keyframes slide {
-            0% { transform: translateX(100%); }
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
             100% { transform: translateX(-100%); }
         }
     </style>
@@ -107,3 +109,4 @@
     </script>
 </body>
 </html>
+
