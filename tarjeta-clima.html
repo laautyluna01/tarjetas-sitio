@@ -16,22 +16,22 @@
         }
         .weather-card {
             display: flex;
-            background-color: #ffffff;
+            background-color: transparent;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 10px;
+            padding: 5px;
             max-width: 600px;
             align-items: center;
         }
         .weather-icon {
-            margin-right: 20px;
+            margin-right: 5px;
         }
         .temperature {
-            font-size: 48px;
+            font-size: 36px;
             color: #ff8c00;
         }
         .details {
-            font-size: 16px;
+            font-size: 12px;
             color: #555;
         }
         .weather-info {
@@ -39,7 +39,7 @@
         }
         .weather-info h2 {
             margin: 0;
-            font-size: 24px;
+            font-size: 18px;
             color: #333;
         }
     </style>
@@ -66,7 +66,7 @@
                         if (deg > 292.5 && deg <= 337.5) return 'NO';
                     };
                     const windDirection = getWindDirection(data.wind.deg);
-                    document.querySelector('.details').innerHTML = `ST: ${Math.round(data.main.feels_like)}°C<br>Humedad: ${data.main.humidity}%<br>Viento: ${data.wind.speed} km/h, ${windDirection}`;
+                    document.querySelector('.details').innerHTML = `ST: ${Math.round(data.main.feels_like)}°C<br>Viento: ${data.wind.speed} km/h, ${windDirection}`;
                 })
                 .catch(error => console.error('Error fetching the weather data:', error));
         });
@@ -80,8 +80,9 @@
         <div class="weather-info">
             <h2>Rio Grande, Argentina</h2>
             <div class="temperature">23°C</div>
-            <div class="details">Humedad: 60%<br>Viento: 15 km/h</div>
+            <div class="details">Viento: 15 km/h</div>
         </div>
     </div>
 </body>
 </html>
+
