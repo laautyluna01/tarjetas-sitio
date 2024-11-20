@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjeta de Clima</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .weather-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 300px;
+            text-align: center;
+        }
+        .weather-card h2 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+        }
+        .weather-icon {
+            margin: 20px 0;
+        }
+        .temperature {
+            font-size: 48px;
+            color: #ff8c00;
+        }
+        .details {
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const apiKey = '855e4a1887fe26432094438459003aa3';
+            const city = 'Rio Grande, AR';
+            const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}&lang=es`;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    document.querySelector('.weather-card h2').textContent = `${data.name}, ${data.sys.country}`;
+                    document.querySelector('.weather-icon img').src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+                    document.querySelector('.temperature').textContent = `${Math.round(data.main.temp)}°C`;
+                    const getWindDirection = (deg) => {
+                        if (deg > 337.5 || deg <= 22.5) return 'N';
+                        if (deg > 22.5 && deg <= 67.5) return 'NE';
+                        if (deg > 67.5 && deg <= 112.5) return 'E';
+                        if (deg > 112.5 && deg <= 157.5) return 'SE';
+                        if (deg > 157.5 && deg <= 202.5) return 'S';
+                        if (deg > 202.5 && deg <= 247.5) return 'SO';
+                        if (deg > 247.5 && deg <= 292.5) return 'O';
+                        if (deg > 292.5 && deg <= 337.5) return 'NO';
+                    };
+                    const windDirection = getWindDirection(data.wind.deg);
+                    document.querySelector('.details').innerHTML = `ST: ${Math.round(data.main.feels_like)}°C<br>Humedad: ${data.main.humidity}%<br>Viento: ${data.wind.speed} km/h, ${windDirection}`;
+                })
+                .catch(error => console.error('Error fetching the weather data:', error));
+        });
+    </script>
+</head>
+<body>
+    <div class="weather-card">
+        <h2>Rio Grande, Argentina</h2>
+        <div class="weather-icon">
+            <img src="https://via.placeholder.com/100" alt="Weather Icon">
+        </div>
+        <div class="temperature">23°C</div>
+        <div class="details">Soleado<br>Humedad: 60%<br>Viento: 15 km/h</div>
+    </div>
+</body>
+</html>
