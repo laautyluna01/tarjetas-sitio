@@ -1,0 +1,28 @@
+// Aplicar la fuente Arial al cuerpo de la página
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5; // Un fondo claro para mejor legibilidad
+  color: #333; // Color de texto para buen contraste
+}
+
+// Estilos para encabezados
+h1, h2, h3, h4, h5, h6 {
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+}
+
+// Estilos para párrafos
+p {
+  line-height: 1.6;
+  margin-bottom: 1em;
+}
+
+// Estilos para enlaces
+a {
+  color: #007acc; // Un color azul para los enlaces
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline; // Subrayar los enlaces al pasar el ratón
+  }
+}
