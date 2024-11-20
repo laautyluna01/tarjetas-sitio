@@ -1,1 +1,1 @@
-Ver tipo cambio
+Ver cotizaciones dolar
